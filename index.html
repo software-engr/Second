@@ -5,74 +5,92 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Peer-Graded Project</title>
   <style>
+    /* General Styling */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
     }
-    /* Header styling */
+    h1, h2 {
+      margin: 10px 0;
+    }
+
+    /* Header */
     header {
-      padding: 10px;
-      background-color: #4CAF50;
-      color: white;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
     }
     header h1 {
-      margin: 0;
       font-size: 24px;
     }
-    /* Navigation Bar */
     nav {
       display: flex;
       gap: 15px;
     }
     nav a {
-      text-decoration: none;
       color: white;
+      text-decoration: none;
       padding: 5px 10px;
       border-radius: 5px;
+      transition: background-color 0.3s ease, font-weight 0.3s ease;
     }
     nav a:hover {
       background-color: #45a049;
       font-weight: bold;
     }
-    /* Section styling */
+
+    /* Section Styling */
     section {
       padding: 20px;
+      margin: 10px auto;
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      border-radius: 8px;
     }
+
     #about img {
-      border-radius: 50%;
       width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-bottom: 15px;
     }
-    #skills ul {
+
+    #skills ul, #projects ul, #recommendations ul {
       list-style: none;
       padding: 0;
     }
-    #skills li {
+
+    #skills li, #projects li, #recommendations li {
       display: flex;
       align-items: center;
-      gap: 10px;
       margin-bottom: 10px;
     }
+
     #skills img {
       width: 30px;
+      height: 30px;
+      margin-right: 10px;
     }
-    #projects ul, #recommendations ul {
-      list-style: none;
-      padding: 0;
-    }
-    #projects li, #recommendations li {
-      margin-bottom: 10px;
-    }
+
+    /* Footer */
     footer {
       text-align: center;
       padding: 10px;
-      background-color: #f1f1f1;
+      background-color: #4CAF50;
+      color: white;
+      position: sticky;
+      bottom: 0;
     }
     footer img {
-      width: 30px;
+      width: 25px;
+      vertical-align: middle;
     }
   </style>
 </head>
@@ -82,7 +100,7 @@
     <h1>Styled Name</h1>
     <nav>
       <a href="#about">About</a>
-      <a href="#projects">Project Details</a>
+      <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
       <a href="#recommendations">Recommendations</a>
     </nav>
@@ -92,16 +110,16 @@
   <section id="about">
     <h2>About Me</h2>
     <img src="https://via.placeholder.com/150" alt="Profile Image">
-    <p>Hi, I am [Your Name], a passionate learner exploring new skills and challenges!</p>
+    <p>Hello! I’m [Your Name], an enthusiastic learner passionate about web development and design!</p>
   </section>
 
   <!-- Skills Section -->
   <section id="skills">
     <h2>Skills</h2>
     <ul>
-      <li><img src="https://via.placeholder.com/30" alt="Skill 1"> HTML</li>
-      <li><img src="https://via.placeholder.com/30" alt="Skill 2"> CSS</li>
-      <li><img src="https://via.placeholder.com/30" alt="Skill 3"> JavaScript</li>
+      <li><img src="https://via.placeholder.com/30" alt="HTML Logo"> HTML</li>
+      <li><img src="https://via.placeholder.com/30" alt="CSS Logo"> CSS</li>
+      <li><img src="https://via.placeholder.com/30" alt="JavaScript Logo"> JavaScript</li>
     </ul>
   </section>
 
@@ -109,9 +127,9 @@
   <section id="projects">
     <h2>Projects</h2>
     <ul>
-      <li>Project 1: Personal Portfolio</li>
+      <li>Project 1: Personal Portfolio Website</li>
       <li>Project 2: To-Do List Application</li>
-      <li>Project 3: Interactive Quiz</li>
+      <li>Project 3: Interactive Quiz Game</li>
     </ul>
   </section>
 
@@ -119,30 +137,33 @@
   <section id="recommendations">
     <h2>Recommendations</h2>
     <ul id="recommendationList">
-      <li>Great teamwork!</li>
-      <li>Excellent problem-solving skills.</li>
-      <li>Creative thinker!</li>
+      <li>Hardworking and reliable!</li>
+      <li>Excellent coding skills.</li>
+      <li>Great team player!</li>
     </ul>
-    <input type="text" id="newRecommendation" placeholder="Add a recommendation">
-    <button onclick="addRecommendation()">Add</button>
+    <input type="text" id="newRecommendation" placeholder="Add a recommendation" style="margin-top: 10px; padding: 5px; width: 100%;">
+    <button onclick="addRecommendation()" style="margin-top: 10px; padding: 5px 10px;">Add Recommendation</button>
   </section>
 
   <!-- Footer -->
   <footer>
-    <img src="https://via.placeholder.com/30" alt="Home Icon">
+    <p>Home <img src="https://via.placeholder.com/30" alt="Home Icon"></p>
   </footer>
 
   <script>
     function addRecommendation() {
-      const list = document.getElementById('recommendationList');
       const input = document.getElementById('newRecommendation');
-      const newRec = input.value.trim();
-      if (newRec) {
-        const listItem = document.createElement('li');
-        listItem.textContent = newRec;
-        list.appendChild(listItem);
+      const recommendationList = document.getElementById('recommendationList');
+      const newRecommendation = input.value.trim();
+
+      if (newRecommendation) {
+        const li = document.createElement('li');
+        li.textContent = newRecommendation;
+        recommendationList.appendChild(li);
         alert('Recommendation added successfully!');
         input.value = '';
+      } else {
+        alert('Please enter a recommendation before adding.');
       }
     }
   </script>
